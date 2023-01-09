@@ -18,3 +18,5 @@ public class NameAi extends Player {
     return 4;
   }
 }
+
+//test
