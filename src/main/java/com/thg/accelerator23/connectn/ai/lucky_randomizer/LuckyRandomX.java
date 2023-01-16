@@ -17,7 +17,6 @@ public class LuckyRandomX extends Player {
 
   @Override
   public int makeMove(Board board) {
-
     CheckWhichColumnsAreEmpty checkWhichColumnsAreEmpty = new CheckWhichColumnsAreEmpty(board);
     List<Integer> emptyColumns = checkWhichColumnsAreEmpty.fullColumnChecker();
     int randomNumber = new Random().nextInt(0, emptyColumns.size());
