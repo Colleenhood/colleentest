@@ -104,16 +104,22 @@ public class ThreeComplete extends Player {
         }
         int possibleMove1 = getMinVacantY(board, candidate1);
         int possibleMove2 = getMinVacantY(board, candidate2);
+        int mightGoHere;
         if (possibleMove1==candidate1.getY()) {
-            return candidate1.getX();
+            mightGoHere = candidate1.getX();
         } else if (possibleMove2==candidate2.getY()) {
-            return candidate2.getY();
+            mightGoHere = candidate2.getY();
         } else {
+            mightGoHere = 20;
+        }
             CheckWhichColumnsAreEmpty checkWhichColumnsAreEmpty = new CheckWhichColumnsAreEmpty(board);
             List<Integer> emptyColumns = checkWhichColumnsAreEmpty.fullColumnChecker();
-            int randomNumber = new Random().nextInt(0, emptyColumns.size());
-            return emptyColumns.get(randomNumber);
-        }
+            if (emptyColumns.contains(mightGoHere)) {
+                return mightGoHere;
+            } else {
+                int randomNumber = new Random().nextInt(0, emptyColumns.size());
+                return emptyColumns.get(randomNumber);
+            }
     }
 
     private int getMinVacantY(Board board, Position p) {
