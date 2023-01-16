@@ -4,6 +4,10 @@ import com.thehutgroup.accelerator.connectn.player.Board;
 import com.thehutgroup.accelerator.connectn.player.Counter;
 import com.thehutgroup.accelerator.connectn.player.Player;
 
+import java.util.List;
+import java.util.Random;
+
+//TODO: Once done, remember to add version to json file (line 29 of README) and JITPACKy thingy
 
 public class LuckyRandomX extends Player {
   public LuckyRandomX(Counter counter) {
@@ -13,8 +17,14 @@ public class LuckyRandomX extends Player {
 
   @Override
   public int makeMove(Board board) {
-    //TODO: some crazy analysis
-    //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
-    return 4;
+
+    CheckWhichColumnsAreEmpty checkWhichColumnsAreEmpty = new CheckWhichColumnsAreEmpty(board);
+    List<Integer> emptyColumns = checkWhichColumnsAreEmpty.fullColumnChecker();
+    int randomNumber = new Random().nextInt(0, emptyColumns.size());
+
+    System.out.println("Random number: " + randomNumber);
+    System.out.println("Available columns: " + emptyColumns);
+
+    return emptyColumns.get(randomNumber);
   }
 }
