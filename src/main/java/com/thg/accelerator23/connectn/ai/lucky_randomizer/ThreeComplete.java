@@ -52,7 +52,11 @@ public class ThreeComplete extends Player {
         List<Function<Position, Position>> allMovementFunctions = getAllMovementFunctions();
         Map<Counter, Integer[]> bestRunByColour = new HashMap<>();
         Integer[] RunParametersO = new Integer[3];
+        RunParametersO[0] = 0;
+        RunParametersO[1] = 15;
+        RunParametersO[2] = 15;
         Integer[] RunParametersX = new Integer[3];
+        RunParametersX = RunParametersO;
         Integer[] useThisRun = new Integer[3];
         Position useThisStartPosition = new Position(10, 10);
         Function<Position, Position> useThisMovementFunction = hMover;
